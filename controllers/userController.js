@@ -4,23 +4,24 @@ const jwt = require('jsonwebtoken');
 
 /*
 const createUser = async (req, res) => {
-    const {            } = req.body;
+    const { name, email, passaword } = req.body;
     await User.create({
-       
-
+      name: name, 
+      email: email,
+      password: password
 
     }).then(() => {
-        res.json('         ');
-        console.log('           ');
+        res.json('sucesso ao criar usuario');
+        console.log('sucesso!');
     }).catch((erro) => {
-        res.json('             ');
-        console.log(`  : ${erro}`);
+        res.json('Erro no usuario');
+        console.log(`Erro ao criar: ${erro}`);
     })
 }
 const findUsers = async (req, res) => {
     const     = await User.findAll();
     try {
-        res.json(    );
+        res.json(users);
     } catch (error) {
         res.status(404).json("Ocorreu um erro na busca!");
     };
@@ -34,15 +35,15 @@ const deleteUser = async (req, res) => {
                 
             }
         }).then(() => {
-            res.json("         ");
+            res.json("Usuario deletado");
         })
     } catch (error) {
-        res.status(404).json("      ");
+        res.status(404).json("Erro ao deletar");
     }
 }
 const updateUser = async (req, res) => {
     const id = parseInt(req.params.id);
-    const {       } = req.body;
+    const { name, email, password} = req.body;
     try {
         await User.update(
             {
