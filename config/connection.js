@@ -6,7 +6,7 @@ const sequelize = new Sequelize( config.development );
 
 try {
   sequelize.authenticate();
-  console.log('Sucesso na Conexã');
+  console.log('Sucesso na Conexão');
 } catch (error) {
   console.error('Não foi possivel conectar no banco', error);
 }
