@@ -1,3 +1,5 @@
+require('./config/connection');
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
@@ -29,4 +31,3 @@ app.use(expressJWT({
 
 app.use(express.json(), routes, cors());
 app.listen(port, () => { console.log(`Run server...${port}`) });
-	
