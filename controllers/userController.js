@@ -2,6 +2,7 @@ const User = require('../models/User');
 const secret = require('../config/auth.json');
 const bcript = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
 const createUser = async (req, res) => {
@@ -74,10 +75,12 @@ const authenticatedUser = async (req, res) => {
 
     try {
         const isUserAuthenticated = await User.findOne({
-            where: { email, password}
+            where: { email }
         })
-        if(isUserAuthenticated) {
-            const token = jwt.sign({ id: email }, secret.secret, {
+        const passwordvalideted = bcript.compare(password , isUserAuthenticated.password);
+
+        if(passwordvalideted) {
+            const token = jwt.sign({ id: email }, process.env.SECRET, {
                 expiresIn: 86400
             });
             res.cookie('token', token, { httpOnly: true }).json({
