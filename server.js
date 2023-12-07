@@ -24,7 +24,7 @@ app.use(expressJWT({
 
     getToken: req => req.cookies.token
 }).unless({
-    path: ["/user/authenticated", "/"]
+    path: ["/user/authenticated", "/users", "/"]
 })
 );
 
